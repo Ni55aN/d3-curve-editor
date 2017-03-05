@@ -1,0 +1,33 @@
+.curve-editor
+  .line
+    fill: none
+    stroke: steelblue
+    stroke-width: 4px
+    &.active
+      fill: none
+      stroke: #edc822
+
+  .switcher
+    position: absolute
+    right: 40px
+    top: 40px
+
+  .point
+    fill: #47a
+    stroke: #34a
+    &:hover
+      stroke-width: 4px
+    &.active
+      fill: #ffd92c
+      stroke: #aa892c
+    &.fixed
+      stroke: white
+      stroke-width: 5px
+
+  .switcher
+    padding: 8px
+    fill: rgba(90,90,90,0.4)
+
+  .switcher:hover
+    fill: #59f
+    cursor: pointer
