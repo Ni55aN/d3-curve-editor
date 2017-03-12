@@ -1,4 +1,4 @@
-class CurvePoint {
+export class CurvePoint {
 
     constructor(x, y, z) {
         this.radius = 8;

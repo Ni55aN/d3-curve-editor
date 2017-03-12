@@ -1,4 +1,4 @@
-var Axes = {
+export var Axes = {
     tickMargin: 40,
     list: [{
         name: "Front",

@@ -1,4 +1,8 @@
-class CurveEditor {
+import {Axes} from './axes';
+import {Range} from './range';
+import {CurvePoint} from './curve-point';
+
+export class CurveEditor {
 
     constructor(id, curve, lines, properties, event) {
 

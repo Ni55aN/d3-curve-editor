@@ -1,4 +1,4 @@
-class Event {
+export class Event {
 
     constructor() {
         this.onAdd = function() {};

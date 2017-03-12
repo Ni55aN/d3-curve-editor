@@ -1,4 +1,4 @@
-class Line {
+export class Line {
 
     constructor(color, points, max) {
         this.color = color;

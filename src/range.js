@@ -1,4 +1,4 @@
-class Range {
+export class Range {
 
     constructor(a, b) {
         this.a = a;
