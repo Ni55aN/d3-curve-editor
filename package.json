@@ -4,6 +4,7 @@
   "description": "",
   "main": "build/curve-editor.js",
   "scripts": {
+	"lint": "eslint src",
     "build": "rollup -c | npm-sass src/style/style.sass > build/curve-editor.css",
     "minify-build": "uglifyjs build/curve-editor.js --support-ie8  --compress --output build/curve-editor.min.js"
   },
