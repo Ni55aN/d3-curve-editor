@@ -1,3 +1,5 @@
+import {CurvePoint} from './curve-point';
+
 export class Line {
 
     constructor(color, points, max) {
