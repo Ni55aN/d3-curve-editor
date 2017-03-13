@@ -27,7 +27,7 @@ export class CurveEditor {
         this.lines = lines;
         this.event = event;
         this.active = {
-            line: null,
+            line: lines.length==1?lines[0]:null,
             point: null
         };
 
