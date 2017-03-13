@@ -39,7 +39,7 @@ var createClass = function () {
   };
 }();
 
-var CurvePoint$1 = function () {
+var CurvePoint = function () {
     function CurvePoint(x, y, z) {
         classCallCheck(this, CurvePoint);
 
@@ -120,7 +120,7 @@ var CurveEditor = function () {
         this.lines = lines;
         this.event = event;
         this.active = {
-            line: null,
+            line: lines.length == 1 ? lines[0] : null,
             point: null
         };
 
@@ -310,7 +310,7 @@ var CurveEditor = function () {
             }
 
             var mouse = d3.mouse(this.view.node());
-            var point = new CurvePoint$1();
+            var point = new CurvePoint();
             this.setCoordinate(point, 0, this.x.invert(mouse[0]));
             this.setCoordinate(point, 1, this.y.invert(mouse[1]));
 
@@ -483,7 +483,7 @@ var Line = function () {
 }();
 
 exports.Axes = Axes;
-exports.CurvePoint = CurvePoint$1;
+exports.CurvePoint = CurvePoint;
 exports.CurveEditor = CurveEditor;
 exports.Event = Event;
 exports.Line = Line;
