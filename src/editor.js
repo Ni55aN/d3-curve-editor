@@ -5,8 +5,9 @@ import {Range} from './range';
 
 export class CurveEditor {
 
-    constructor(id, curve, lines, properties) {
+    constructor(container, curve, lines, properties) {
 
+        this._id = Math.random().toString(36).substr(2, 9);
         this.properties = Object.assign({
             dimention: lines[0].points[0].getDimention(),
             activeAxes: Axes.list[0],
@@ -38,16 +39,15 @@ export class CurveEditor {
         this.x = d3.scaleLinear().domain(range[this.axis(0)].toArray());
         this.y = d3.scaleLinear().domain(range[this.axis(1)].toArray());
 
-        this.svg = d3.select('svg#' + id);
-
-        this.svg.classed('curve-editor', true)
+        this.container = d3.select(container)
+            .classed('curve-editor', true)
             .attr('tabindex', 1);
 
-        this.rect = this.svg.append('rect')
+        this.rect = this.container.append('rect')
             .attr('fill', 'transparent')
             .on('click', this.rectClick.bind(this));
 
-        this.view = this.svg.append('g');
+        this.view = this.container.append('g');
 
         this.zoom = d3.zoom()
             .scaleExtent([0.5, 2])
@@ -57,18 +57,18 @@ export class CurveEditor {
                 this.gY.call(this.yAxis.scale(d3.event.transform.rescaleY(this.y)));
             });
 
-        this.svg.call(this.zoom);
+        this.container.call(this.zoom);
 
         this.xAxis = d3.axisBottom(this.x);
         this.yAxis = d3.axisLeft(this.y);
 
-        this.gX = this.svg.append('g');
-        this.gY = this.svg.append('g');
+        this.gX = this.container.append('g');
+        this.gY = this.container.append('g');
 
         this.valueline = d3.line()
             .curve(curve);
 
-        this.coordSwitcher = this.svg.append('text')
+        this.coordSwitcher = this.container.append('text')
             .on('click', () => {
 
                 if (this.properties.dimention === 2)
@@ -94,8 +94,8 @@ export class CurveEditor {
             .classed('switcher', true);
 
         d3.select(window)
-            .on('keydown.' + id, this.keydown.bind(this))
-            .on('resize.' + id, this.resize.bind(this));
+            .on('keydown.' + this._id, this.keydown.bind(this))
+            .on('resize.' + this._id, this.resize.bind(this));
 
         this.resize();
     }
@@ -113,7 +113,7 @@ export class CurveEditor {
     }
 
     resize() {
-        var bbox = this.svg.node().getBoundingClientRect();
+        var bbox = this.container.node().getBoundingClientRect();
 
         var width = bbox.width;
         var height = bbox.height;
@@ -129,7 +129,7 @@ export class CurveEditor {
             h = height;
         }
 
-        this.svg
+        this.container
             .attr('width', width)
             .attr('height', height);
 
@@ -150,7 +150,7 @@ export class CurveEditor {
             [-margin, -margin],
             [w + margin, h + margin]
         ]);
-        this.zoom.scaleTo(this.svg, 1);
+        this.zoom.scaleTo(this.container, 1);
 
         this.coordSwitcher
             .attr('x', width - 2 * Axes.tickMargin)
@@ -292,7 +292,7 @@ export class CurveEditor {
     }
 
     keydown() {
-        if (this.svg.node() !== document.activeElement)
+        if (this.container.node() !== document.activeElement)
             return;
 
         switch (d3.event.keyCode) {
