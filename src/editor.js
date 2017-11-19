@@ -5,7 +5,7 @@ import {Range} from './range';
 
 export class CurveEditor {
 
-    constructor(container, curve, lines, properties) {
+    constructor(container, lines, properties = {}) {
 
         this._id = Math.random().toString(36).substr(2, 9);
         this.properties = Object.assign({
@@ -14,10 +14,11 @@ export class CurveEditor {
             fixedCount: false,
             fixedAxis: null,
             stretch: false,
-            closed: curve === d3.curveBasisClosed ||
-                curve === d3.curveCardinalClosed ||
-                curve === d3.curveCatmullRomClosed ||
-                curve === d3.curveLinearClosed,
+            curve: d3.curveBasis,
+            closed: properties.curve === d3.curveBasisClosed ||
+                properties.curve === d3.curveCardinalClosed ||
+                properties.curve === d3.curveCatmullRomClosed ||
+                properties.curve === d3.curveLinearClosed,
             margin: 25,
             range: {
                 x: new Range(0, 1),
@@ -66,7 +67,7 @@ export class CurveEditor {
         this.gY = this.container.append('g');
 
         this.valueline = d3.line()
-            .curve(curve);
+            .curve(this.properties.curve);
 
         this.coordSwitcher = this.container.append('text')
             .on('click', () => {
