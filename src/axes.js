@@ -1,13 +1,13 @@
 export var Axes = {
     tickMargin: 40,
     list: [{
-        name: "Front",
+        name: 'Front',
         indices: ['x', 'y', 'z']
     }, {
-        name: "Right",
+        name: 'Right',
         indices: ['z', 'y', 'x']
     }, {
-        name: "Top",
+        name: 'Top',
         indices: ['x', 'z', 'y']
     }]
 };

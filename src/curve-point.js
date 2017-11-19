@@ -13,10 +13,10 @@ export class CurvePoint {
     }
 
     isFixed(val) {
-        if (typeof val == "boolean") {
+        if (typeof val === 'boolean') {
             this.fixed = val;
             return this;
         }
         return this.fixed;
     }
-};
+}
