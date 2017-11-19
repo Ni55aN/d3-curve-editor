@@ -5,8 +5,9 @@
   "main": "build/d3-curve-editor.js",
   "scripts": {
     "lint": "eslint src",
-    "build": "rollup -c | npm-sass src/style/style.sass > build/d3-curve-editor.css",
-    "minify-build": "uglifyjs build/d3-curve-editor.js --support-ie8  --compress --output build/d3-curve-editor.min.js"
+    "build": "rollup -c && npm-sass src/style/style.sass > build/d3-curve-editor.css",
+    "minify-build": "uglifyjs build/d3-curve-editor.js --support-ie8  --compress --output build/d3-curve-editor.min.js",
+    "prepublishOnly": "npm run lint && npm run build && npm run minify-build"
   },
   "repository": {
     "type": "git",
