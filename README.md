@@ -1,17 +1,21 @@
 D3 Curve Editor
 ====
-#### JavaScript library
-![curve editor](https://github.com/Ni55aN/D3-Curve-editor/blob/master/demo/screenshot.png?raw=true)
-
-### Dependencies
-  - [D3.js](https://github.com/d3/d3)
+#### JavaScript library for editing curves
+![curve editor](https://raw.githubusercontent.com/Ni55aN/d3-curve-editor/0.1.0/demo/screenshot.png)
 
 ### Usage
-Download the library and styles. Include it in your html.
+Include it in your html:
 ```html
-<script src="js/curve-editor.min.js"></script>
-<link  href="css/curve-editor.css" rel="stylesheet" type="text/css"></link>
+<script src="https://cdn.jsdelivr.net/npm/d3@4.10.2/build/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-curve-editor@0.2.0/build/d3-curve-editor.min.js"></script>
+<link  href="https://cdn.jsdelivr.net/npm/d3-curve-editor@0.2.0/build/d3-curve-editor.css" rel="stylesheet" type="text/css"></link>
 ```
+Or install from NPM
+```js
+import * as D3CE from 'd3-curve-editor';
+```
+
+
 Create SVG container
 ```html
 <svg tabindex="1" id="editor"></svg>
@@ -30,9 +34,15 @@ lines.push(new D3CE.Line("#fd3",[
 ````      
 Initialize editor
 ```js  
-var editor = new D3CE.CurveEditor('editor', d3.curveCatmullRom,lines,{},new D3CE.Event());
+var container = querySelector('#editor');
+
+var editor = new D3CE.CurveEditor(container,lines,{curve: d3.curveCatmullRom});
+editor.eventListener.on('chage',()=>{});
 ```
-For detail see [demo](https://github.com/Ni55aN/D3-Curve-editor/tree/master/demo)
+For details see [demo](https://codepen.io/Ni55aN/pen/Zavjxv)
+
+### Dependencies
+  - [D3.js](https://github.com/d3/d3)
 
 
 License
