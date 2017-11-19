@@ -1,7 +1,7 @@
 D3 Curve Editor [![Build Status](https://travis-ci.org/Ni55aN/d3-curve-editor.svg?branch=master)](https://travis-ci.org/Ni55aN/d3-curve-editor)
 ====
 #### JavaScript library for editing curves
-![curve editor](https://raw.githubusercontent.com/Ni55aN/d3-curve-editor/0.1.0/demo/screenshot.png)
+![curve editor](http://svgshare.com/i/3vs.svg)
 
 ### Usage
 Include it in your html:
