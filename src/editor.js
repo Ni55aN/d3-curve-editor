@@ -188,7 +188,7 @@ export class CurveEditor {
 
     updatePoints() {
         var item = this.view.selectAll('circle')
-            .data(this.lines.reduce(function(a, b) {
+            .data(this.lines.reduce(function (a, b) {
                 return a.concat(b.points);
             }, []));
 
@@ -200,6 +200,7 @@ export class CurveEditor {
         new_item
             .on('click', point => this.selectPoint(point))
             .call(d3.drag()
+                .on('start', (d) => { this.active.point = d; this.updatePoints()})   
                 .on('drag', this.onDrag.bind(this)));
 
         item = new_item.merge(item);
