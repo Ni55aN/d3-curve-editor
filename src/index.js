@@ -1,6 +1,6 @@
 import {Axes} from './axes';
-import {CurvePoint} from './curve-point';
 import {CurveEditor} from './editor';
+import {CurvePoint} from './curve-point';
 import {Line} from './line';
 import {Range} from './range';
 

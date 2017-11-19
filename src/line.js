@@ -17,7 +17,7 @@ export class Line {
 
     validDimention() {
         return this.points.every((point) => {
-            return point.getDimention() == this.points[0].getDimention();
+            return point.getDimention() === this.points[0].getDimention();
         });
     }
 
@@ -56,7 +56,7 @@ export class Line {
         for (var i = 0; i < l; i++) {
 
             var p1 = this.points[i];
-            var p2 = this.points[i + 1 == count ? 0 : i + 1];
+            var p2 = this.points[i + 1 === count ? 0 : i + 1];
 
             var segDistance = this.distToSegment(point, p1, p2, axis);
 
@@ -85,13 +85,13 @@ export class Line {
             y: w[axis[1]]
         };
 
-        function dist2(v, w) {
-            return Math.pow(v.x - w.x, 2) + Math.pow(v.y - w.y, 2);
+        function dist2(q, e) {
+            return Math.pow(q.x - e.x, 2) + Math.pow(q.y - e.y, 2);
         }
 
         var l2 = dist2(v, w);
 
-        if (l2 == 0)
+        if (l2 === 0)
             return dist2(p, v);
         var t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
 

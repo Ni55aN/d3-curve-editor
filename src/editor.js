@@ -1,7 +1,7 @@
 import {Axes} from './axes';
+import {EditorView} from './editorview';
 import {EventListener} from './eventlistener'
 import {Range} from './range';
-import {EditorView} from './editorview';
 
 export class CurveEditor {
 

@@ -9,7 +9,7 @@ export class CurvePoint {
     }
 
     getDimention() {
-        return this.z === undefined ? 2 : 3;
+        return typeof this.z === 'undefined' ? 2 : 3;
     }
 
     isFixed(val) {

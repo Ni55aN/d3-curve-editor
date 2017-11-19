@@ -1,10 +1,9 @@
 import {Axes} from './axes';
 import {CurvePoint} from './curve-point';
-import {Range} from './range';
 
 export class EditorView {
 
-    constructor(editor, container, props) {
+    constructor(editor, container) {
         
         this.editor = editor;
         
@@ -179,7 +178,10 @@ export class EditorView {
             })
             .attr('r', d => d.radius)
             .attr('class', d => {
-                return 'point ' + (this.editor.active.point === d ? 'active' : '') + (d.isFixed() ? ' fixed' : '');
+                var actClass = this.editor.active.point === d ? 'active' : '';
+                var fixClass = d.isFixed() ? ' fixed' : '';
+
+                return `point ${actClass}  ${fixClass}`;
             });
 
     }
@@ -223,13 +225,15 @@ export class EditorView {
             return;
         }
 
-        var neighbor = this.editor.active.line.getNeighbor(point, [this.axis(0), this.axis(1)], props.closed);
+        var line = this.editor.active.line;
+        var neighbor = line.getNeighbor(point, [this.axis(0), this.axis(1)], props.closed);
 
         if (props.dimention === 3) {
-            var prev = this.editor.active.line.points[neighbor];
-            var next = this.editor.active.line.points[neighbor + 1];
+            var prev = line.points[neighbor];
+            var next = line.points[neighbor + 1];
+            var coord = (this.getCoordinate(prev, 2) + this.getCoordinate(next, 2) / 2);
 
-            this.setCoordinate(point, 2, (this.getCoordinate(prev, 2) + this.getCoordinate(next, 2) / 2));
+            this.setCoordinate(point, 2, coord);
         }
 
         this.editor.addPoint(point, neighbor + 1);
