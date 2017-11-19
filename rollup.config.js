@@ -1,5 +1,4 @@
 import babel from 'rollup-plugin-babel';
-import sourcemaps from 'rollup-plugin-sourcemaps';
 
 export default {
     entry: 'src/index.js',
@@ -14,8 +13,7 @@ export default {
             ]
         ],
         plugins: ['external-helpers']
-    }),
-    sourcemaps()
+    })
     ],
     format: 'umd',
     moduleName: 'D3CE'
