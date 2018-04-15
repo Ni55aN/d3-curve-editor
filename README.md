@@ -37,7 +37,7 @@ Initialize editor
 var container = querySelector('#editor');
 
 var editor = new D3CE.CurveEditor(container,lines,{curve: d3.curveCatmullRom});
-editor.eventListener.on('chage',()=>{});
+editor.eventListener.on('change',()=>{});
 ```
 For details see [demo](https://codepen.io/Ni55aN/pen/Zavjxv)
 
