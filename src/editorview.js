@@ -45,8 +45,8 @@ export class EditorView {
         this.coordSwitcher = this.container.append('text')
             .on('click', () => {
         
-                if (props.dimention === 2)
-                    throw new Error('dimention = 2');
+                if (props.dimension === 2)
+                    throw new Error('dimension = 2');
         
                 for (var i = 0; i < Axes.list.length; i++)
                     if (props.activeAxes === Axes.list[i]) {
@@ -64,7 +64,7 @@ export class EditorView {
             .text(() => {
                 return props.activeAxes.name;
             })
-            .style('display', props.dimention > 2 ? 'block' : 'none')
+            .style('display', props.dimension > 2 ? 'block' : 'none')
             .classed('switcher', true);
         
         d3.select(window)
@@ -228,7 +228,7 @@ export class EditorView {
         var line = this.editor.active.line;
         var neighbor = line.getNeighbor(point, [this.axis(0), this.axis(1)], props.closed);
 
-        if (props.dimention === 3) {
+        if (props.dimension === 3) {
             var prev = line.points[neighbor];
             var next = line.points[neighbor + 1];
             var coord = (this.getCoordinate(prev, 2) + this.getCoordinate(next, 2) / 2);

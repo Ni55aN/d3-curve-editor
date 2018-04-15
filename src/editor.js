@@ -9,7 +9,7 @@ export class CurveEditor {
 
         this._id = Math.random().toString(36).substr(2, 9);
         this.properties = Object.assign({
-            dimention: lines[0].points[0].getDimention(),
+            dimension: lines[0].points[0].getDimension(),
             activeAxes: Axes.list[0],
             fixedCount: false,
             fixedAxis: null,

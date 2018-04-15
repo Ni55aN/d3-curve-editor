@@ -10,15 +10,20 @@ export class Line {
         if (points.length < 2)
             throw new Error('Need more points');
 
-        if (!this.validDimention())
+        if (!this.validDimension())
             throw new Error('Not all the points of the same dimension');
 
     }
 
-    validDimention() {
+    validDimension() {
         return this.points.every((point) => {
-            return point.getDimention() === this.points[0].getDimention();
+            return point.getDimension() === this.points[0].getDimension();
         });
+    }
+
+    validDimention() {
+        console.warn('The validDimention() method was renamed to validDimension()')
+        return this.validDimension();
     }
 
     insert(i, point) {

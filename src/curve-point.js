@@ -8,8 +8,13 @@ export class CurvePoint {
         this.z = z;
     }
 
-    getDimention() {
+    getDimension() {
         return typeof this.z === 'undefined' ? 2 : 3;
+    }
+
+    getDimention() {
+        console.warn('The getDimention() method was renamed to getDimension()')
+        return this.getDimension();
     }
 
     isFixed(val) {
