@@ -1,5 +1,5 @@
 export var Axes = {
-    tickMargin: 40,
+    tickMargin: 50,
     list: [{
         name: 'Front',
         indices: ['x', 'y', 'z']

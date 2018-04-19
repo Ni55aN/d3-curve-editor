@@ -113,7 +113,7 @@ export class EditorView {
             .attr('width', width)
             .attr('height', height);
 
-        this.xAxis.ticks(Math.floor(height / Axes.tickMargin));
+        this.xAxis.ticks(Math.floor(width / Axes.tickMargin));
         this.yAxis.ticks(Math.floor(height / Axes.tickMargin));
 
         this.gX.attr('transform', 'translate(0,' + (height - margin) + ')').call(this.xAxis);
